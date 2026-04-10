@@ -25,3 +25,4 @@ Route::post('/create', [PropertyController::class, 'store'])->name('properties.s
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
 Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');

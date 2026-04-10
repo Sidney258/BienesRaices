@@ -6,6 +6,6 @@
         class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error($name) border-red-500 @enderror"
         value="{{ old($name, $value) }}">
     @error($name)
-        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        <p class="w-full bg-red-500 p-2 text-white text-sm mt-2">{{ $message }}</p>
     @enderror
 </div>

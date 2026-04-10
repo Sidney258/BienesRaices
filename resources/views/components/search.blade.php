@@ -1,11 +1,5 @@
 <div class="p-4">
     <form action="{{ route('properties.search') }}" method="GET" class="w-full grid grid-cols-1 md:grid-cols-4 gap-4">
-
-        <div>
-            <input type="text" name="keywords" placeholder="Procurar"
-                class="w-full border rounded px-4 py-2 focus:outline-none">
-        </div>
-
         <div>
             <input type="text" name="location" placeholder="Localização"
                 class="w-full border rounded px-4 py-2 focus:outline-none">

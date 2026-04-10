@@ -1,7 +1,6 @@
 <x-layout>
-    {{-- This is the login view --}}
+    <h2 class="text-4xl font-bold my-6 text-center">Registo</h2>
     <div class="w-full shadow max-w-md mx-auto mt-10">
-        <h2 class="text-4xl font-bold my-6 text-center">Registo</h2>
         <form action="{{ route('register.store') }}" method="POST" class="bg-white rounded px-8 pt-6 pb-8 mb-4">
             @csrf
 
@@ -18,7 +17,7 @@
                 </button>
             </div>
             <div>
-                <p class="text-black text-sm mt-5">Tem uma conta?<a class="text-blue-400 underline"
+                <p class="text-black text-sm mt-5">Tem uma conta?<a class="text-blue-300"
                         href="{{ route('login') }}">Inicia Sessao
                     </a>
                 </p>

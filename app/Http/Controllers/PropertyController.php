@@ -111,39 +111,4 @@ class PropertyController extends Controller
         $this->authorize('update', $property);
         return view('properties.edit')->with('property', $property);
     }
-
-    public function search(Request $request)
-    {
-        $keywords = strtolower($request->input('keywords'));
-        $location = strtolower($request->input('location'));
-        $type = strtolower($request->input('type'));
-
-        $query = Property::query();
-
-        if ($keywords) {
-            $query->where(function ($q) use ($keywords) {
-                $q->whereRaw('LOWER(title) like ?', ['%' . $keywords . '%'])
-                    ->orWhereRaw('LOWER(description) like ?', ['%' . $keywords . '%'])
-                    ->orWhereRaw('LOWER(address) like ?', ['%' . $keywords . '%'])
-                    ->orWhereRaw('LOWER(status) like ?', ['%' . $keywords . '%'])
-                    ->orWhereRaw('LOWER(country) like ?', ['%' . $keywords . '%']);
-            });
-        }
-        if ($location) {
-            $query->where(function ($q) use ($location) {
-                $q->whereRaw('LOWER(address) like ?', ['%' . $location . '%'])
-                    ->orWhereRaw('LOWER(city) like ?', ['%' . $location . '%'])
-                    ->orWhereRaw('LOWER(state) like ?', ['%' . $location . '%']);
-            });
-        }
-        if ($type) {
-            $query->where(function ($q) use ($type) {
-                $q->whereRaw('LOWER(type) like ?', ['%' . $type . '%']);
-            });
-        }
-
-        $properties = $query->paginate(3);
-
-        return view('properties.index')->with('properties', $properties);
-    }
 }

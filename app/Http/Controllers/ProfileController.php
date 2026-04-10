@@ -19,4 +19,18 @@ class ProfileController extends Controller
             'properties' => $properties
         ]);
     }
+
+    public function update(Request $request)
+    {
+
+        $user = Auth::user();
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255'
+        ]);
+
+        $user->update($data);
+
+        return redirect()->route('profile')->with('success', 'perfil actualizado com sucesso');
+    }
 }

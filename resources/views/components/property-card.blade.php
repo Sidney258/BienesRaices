@@ -1,7 +1,6 @@
 @props(['property'])
 
-<div class="bg-gray-100 border-gray-500 relative">
-    <!-- Badge aluguel -->
+<div class="bg-gray-100 border-gray-500 relative shadow-md">
     <span class="absolute top-3 right-3 bg-white text-black text-sm px-3 py-1 rounded-full">
         {{ $property->status }}
     </span>
@@ -10,15 +9,9 @@
 
     <div class="p-5">
         <h1 class="text-3xl text-center font-semibold">{{ $property->title }}</h1>
-
-        <p class="text-center p-5 rounded">
-            {{ $property->description }}
-        </p>
-
-        <!-- Preço -->
-        <p class="text-center font-bold p-2 mb-2">
+        <p class="text-center font-bold p-2 mb-2 text-green-500">
             <span class="text-black">Preço:</span>
-            {{ number_format($property->price, 2, ',', '.') }} MZN
+            {{ number_format($property->price, 2, ',', '.') }}
         </p>
 
         <ul class="flex flex-col gap-4 items-center px-10 md:flex-row justify-between">
@@ -43,8 +36,8 @@
         </ul>
 
         <a href="{{ route('properties.show', $property->id) }}"
-            class="block mt-10 px-10 py-5 bg-black text-white text-center">
-            Ver detalhes
+            class="block mt-10 px-10 py-5 bg-black text-white text-center rounded">
+            detalhes
         </a>
     </div>
 </div>

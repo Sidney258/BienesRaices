@@ -1,13 +1,14 @@
 <x-layout>
-    <div class="mx-auto p-8 shadow w-full md:max-w-3xl">
-        <h2 class="text-4xl text-center font-bold mb-4">
-            Crie a sua publicacao
-        </h2>
+    <h2 class="text-4xl text-center font-bold mb-4">
+        Crie a sua publicacao
+    </h2>
+    <div class="mx-auto p-8 shadow w-full md:max-w-2xl">
         <form method="POST" action="{{ route('properties.store') }}" enctype="multipart/form-data">
             @csrf
 
             <x-input id="title" name="title" label="Title" type="text" placeholder="Title" />
 
+            <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Descricao</label>
             <textarea class="w-full border py-2 px-3 appearance-none outline-0 mb-2" placeholder="descricao" name="description"
                 id="description" cols="5" rows="4"> {{ old('description') }}
             </textarea>
@@ -35,7 +36,8 @@
 
             <x-file id="image" name="image" label="Imagem" />
 
-            <button type="submit" class="w-full bg-black text-white py-4 hover:cursor-pointer focus:outline-none">
+            <button type="submit"
+                class="w-full bg-black text-white py-4 hover:cursor-pointer focus:outline-none rounded">
                 Criar
             </button>
         </form>

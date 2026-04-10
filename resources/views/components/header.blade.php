@@ -1,15 +1,15 @@
-<header class="header px-20 border-b py-2">
-    <div class="container container-header">
+<header class="border">
+    <div class="md:flex justify-between items-center p-7">
         <a href="{{ url('/') }}">
-            <h1 class="text-4xl text-black md:text-center">Bienes<strong>Raices</strong></h1>
+            <h1 class="text-4xl font-bold text-black text-center md:text-left">Bienes<strong>Raices</strong></h1>
         </a>
 
-        <nav class="main-nav">
+        <nav class="flex flex-col items-center gap-4 md:flex-row">
             <a class="text-black hover:underline" href="{{ route('properties.index') }}">propriedades</a>
 
             @guest
-                <a class="text-black hover:underline" href="{{ route('login') }}">login</a>
-                <a class="text-black hover:underline" href="{{ route('register') }}">registar</a>
+                <a class="text-white bg-black px-4 py-1.5 rounded" href="{{ route('login') }}">login</a>
+                <a class="text-white bg-black px-4 py-1.5 rounded" href="{{ route('register') }}">registar</a>
             @endguest
 
             @auth
@@ -24,7 +24,7 @@
             @endauth
 
             @auth
-                <a class="px-10 py-3 bg-black text-white font-semibold" href="{{ route('create') }}">
+                <a class="px-10 py-3 bg-black text-white font-semibold rounded" href="{{ route('create') }}">
                     criar <i class="fa-solid fa-circle-plus ml-3"></i>
                 </a>
             @endauth
