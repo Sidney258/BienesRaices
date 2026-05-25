@@ -13,7 +13,7 @@
                 </button>
             </div>
             <div>
-                <p class="text-black text-sm mt-5">Nao tem uma conta <a class="text-blue-300"
+                <p class="text-black text-sm mt-5">Nao tem uma conta? <a class="text-blue-300"
                         href="{{ route('register') }}">registe-se aqui</a></p>
             </div>
         </form>

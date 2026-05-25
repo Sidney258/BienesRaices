@@ -13,36 +13,35 @@
             </div>
 
             <div class="mb-4 bg-gray-100 p-4 rounded">
-                <p><strong>Description:</strong> {{ $property->description }}</p>
-                <p><strong>Price:</strong> {{ number_format($property->price, 2) }} MZN</p>
-                <p> <strong>Status:</strong> {{ ucfirst($property->status) }}</p>
-                <p><strong>Type:</strong> {{ ucfirst($property->type) }}</p>
+                <p><strong>Descricao:</strong> {{ $property->description }}</p>
+                <p><strong>Preco:</strong> {{ number_format($property->price, 2) }} MZN</p>
+                <p> <strong>Estado:</strong> {{ ucfirst($property->status) }}</p>
+                <p><strong>Tipo:</strong> {{ ucfirst($property->type) }}</p>
                 <div class="">
                     @if ($property->bedrooms)
-                        <p><strong>Bedrooms:</strong> {{ $property->bedrooms }}</p>
+                        <p><strong>Quartos:</strong> {{ $property->bedrooms }}</p>
                     @endif
                     @if ($property->bathrooms)
-                        <p><strong>Bathrooms:</strong> {{ $property->bathrooms }}</p>
+                        <p><strong>Casa de Banho:</strong> {{ $property->bathrooms }}</p>
                     @endif
                     @if ($property->parking_spaces)
-                        <p><strong>Parking Spaces:</strong> {{ $property->parking_spaces }}</p>
+                        <p><strong>Estacionamento:</strong> {{ $property->parking_spaces }}</p>
                     @endif
                 </div>
 
-                <div class="">
-                    <p><strong>Address:</strong> {{ $property->address }}</p>
-                    <p><strong>City:</strong> {{ $property->city }}</p>
-                    <p><strong>State:</strong> {{ $property->state }}</p>
-                    <p><strong>Country:</strong> {{ $property->country }}</p>
+                <div>
+                    <p><strong>Endereco:</strong> {{ $property->address }}</p>
+                    <p><strong>Cidade:</strong> {{ $property->city }}</p>
+                    <p><strong>Provincia:</strong> {{ $property->state }}</p>
+                    <p><strong>Pais:</strong> {{ $property->country }}</p>
                 </div>
 
-                <div class="">
-                    <p><strong>Contact:</strong> {{ $property->contact }}</p>
+                <div>
+                    <p><strong>Contacto:</strong> {{ $property->contact }}</p>
                 </div>
             </div>
             <div class="flex justify-between items-center mt-6">
                 @can('update', $property)
-                    <!-- esquerda -->
                     <div class="flex gap-3">
                         <a href="{{ route('properties.edit', $property->id) }}"
                             class="bg-green-500 text-white px-6 py-2 rounded w-40 text-center hover:bg-green-600 transition">
@@ -62,4 +61,25 @@
             </div>
         </div>
     </div>
+    @auth
+        <form action="{{ route('favorites.toggle', $property->id) }}" method="POST"
+            class="flex justify-center items-center">
+            @csrf
+            <button type="submit"
+                class="px-6 py-2 rounded w-48 text-white transition cursor-pointer
+    {{ auth()->user()->favorites->contains($property->id)
+        ? 'bg-red-500 hover:bg-red-600'
+        : 'bg-yellow-500 hover:bg-yellow-600' }}">
+
+                @if (auth()->user()->favorites->contains($property->id))
+                    <i class="fa-solid fa-bookmark"></i>
+                    <p class="inline">remover</p>
+                @else
+                    <i class="fa-solid fa-bookmark"></i>
+                    <p class="inline">favoritos</p>
+                @endif
+
+            </button>
+        </form>
+    @endauth
 </x-layout>

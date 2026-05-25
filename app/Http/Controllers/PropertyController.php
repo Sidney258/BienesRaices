@@ -111,4 +111,24 @@ class PropertyController extends Controller
         $this->authorize('update', $property);
         return view('properties.edit')->with('property', $property);
     }
+
+    public function search(Request $request): View
+    {
+        $location = strtolower($request->input('location'));
+
+        $query = Property::query();
+
+        if ($location) {
+            $query->where(function ($q) use ($location) {
+                $q->whereRaw('LOWER(title) like ?', ['%' . $location . '%'])
+                    ->orWhereRaw('LOWER(description) like ?', ['%' . $location . '%'])
+                    ->orWhereRaw('LOWER(city) like ?', ['%' . $location . '%'])
+                    ->orWhereRaw('LOWER(state) like ?', ['%' . $location . '%'])
+                    ->orWhereRaw('LOWER(country) like ?', ['%' . $location . '%']);
+            });
+        }
+
+        $properties = $query->paginate(6);
+        return view('properties.index')->with('properties', $properties);
+    }
 }

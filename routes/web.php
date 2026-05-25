@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\FavoriteController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/properties/search', [PropertyController::class, 'search'])->name('properties.search');
@@ -26,3 +27,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
 Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::post('/favorites/{property}', [FavoriteController::class, 'toggle'])->name('favorites.toggle')->middleware('auth');
+Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index')->middleware('auth');

@@ -17,7 +17,7 @@
                 </button>
             </div>
             <div>
-                <p class="text-black text-sm mt-5">Tem uma conta?<a class="text-blue-300"
+                <p class="text-black text-sm mt-5">Tem uma conta? <a class="text-blue-300"
                         href="{{ route('login') }}">Inicia Sessao
                     </a>
                 </p>

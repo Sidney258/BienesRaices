@@ -35,8 +35,8 @@
             @endif
         </ul>
 
-        <a href="{{ route('properties.show', $property->id) }}"
-            class="block mt-10 px-10 py-5 bg-black text-white text-center rounded">
+        <a id="button" href="{{ route('properties.show', $property->id) }}"
+            class="block mt-10 px-10 py-5  text-black text-center">
             detalhes
         </a>
     </div>
